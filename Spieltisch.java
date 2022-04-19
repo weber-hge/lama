@@ -15,6 +15,7 @@ public class Spieltisch extends World {
         super(1200, 800, 1);
         setBackground("Spieltisch/Hintergrund.png");
         
+        addObject(new AussteigenButton(), 1085, 660-5);
         addObject(new SpielregelnButton(), 1085, 714);
     }
 }
