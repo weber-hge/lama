@@ -25,7 +25,7 @@ public class UIElement extends Actor {
     }
 
     /**
-     * Erstellt ein neues UIElement, das Unterelemente enthÃ¤lt.
+     * Erstellt ein neues UIElement, das Unterelemente enthält.
      * @param x x-Koordinate
      * @param y y-Koordinate
      * @param children Unterelemente
@@ -41,20 +41,20 @@ public class UIElement extends Actor {
     }
 
     /**
-     * Wird von Greenfoot aufgerufen, wenn ein Actor zur World hinzugefÃ¼gt wird.
+     * Wird von Greenfoot aufgerufen, wenn ein Actor zur World hinzugefügt wird.
      */
     public void addedToWorld(World w) {
         world = (UIWorld) w;
-        for (var c : children) world.addObject(c, 0, 0);
+        for (var c : children) world.addObject(c, c.x, c.y);
     }
 
     /**
-     * FÃ¼gt ein Unterelement hinzu.
+     * Fügt ein Unterelement hinzu.
      * @param c das Unterelement
      */
     public void addElement(UIElement c) {
         children.add(c);
-        if (world != null) world.addObject(c, 0, 0);
+        if (world != null) world.addObject(c, c.x, c.y);
     }
 
     /**
@@ -92,7 +92,7 @@ public class UIElement extends Actor {
     }
 
     /**
-     * Versteckt oder zeigt das Element an, indem es zur World hinzugefÃ¼gt/entfernt wird.
+     * Versteckt oder zeigt das Element an, indem es zur World hinzugefügt/entfernt wird.
      */
     private void rerender() {
         try {

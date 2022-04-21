@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * Szene fÃ¼r Anzeigen des Spieltischs.
+ * Szene für Anzeigen des Spieltischs.
  * @author Arnim Antritter
  * @version 2022.4.21
  */
@@ -11,11 +11,10 @@ public class Spieltisch extends Scene{
      * Erstellt eine neue Spieltisch-Szene.
      */
     public Spieltisch() {
-        super("Spieltisch/Hintergrund.png");
+        super("Scenes/Spieltisch/Spieltisch.png");
 
-        addElement(new Button(1085, 714, "SpielregelnButton/anzeigen.png") {
+        addElement(new Button(1085, 714, "Scenes/Spieltisch/SpielregelnAnzeigen.png") {
                 void onClick() {
-                    int i = 0;
                     world.useScene(Spielregeln.class);
                 }
             });
