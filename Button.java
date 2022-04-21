@@ -4,19 +4,24 @@ import greenfoot.*;
  * Allgemeiner Button, der angeklickt werden kann.
  * Bei einem Mausklick wird {@link onClick} aufgerufen.
  * @author Arnim Antritter
- * @version 2022.4.19
+ * @version 2022.4.21
  */
 public abstract class Button extends UIElement {
 
     /**
      * Erzeugt einen neuen Button.
+     * @param x x-Koordinate
+     * @param y y-Koordinate
      */
     public Button(int x, int y) {
         this(x, y, "Button/default.png");
     }
 
     /**
-     * TODO
+     * Erzeugt einen neuen Button mit Grafik.
+     * @param x x-Koordinate
+     * @param y y-Koordinate
+     * @param filePath Bild-Datei
      */
     public Button(int x, int y, String filePath) {
         super(x, y);
@@ -28,7 +33,7 @@ public abstract class Button extends UIElement {
     }
 
     /**
-     * Wird bei jedem erneuten Klick einmal ausgeführt.
+     * Wird bei jedem erneuten Klick einmal ausgefï¿½hrt.
      */
     abstract void onClick();
 }

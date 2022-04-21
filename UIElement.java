@@ -2,6 +2,11 @@ import greenfoot.Actor;
 import greenfoot.World;
 import java.util.ArrayList;
 
+/**
+ * Klasse zum einfachen Ein- und Ausblenden von {@link Actor}.
+ * @author Arnim Antritter
+ * @version 2022.4.21
+ */
 public class UIElement extends Actor {
     private int x;
     private int y;
@@ -10,10 +15,21 @@ public class UIElement extends Actor {
     private ArrayList<UIElement> children;
     protected UIWorld world;
 
+    /**
+     * Erstellt ein neues UIElement.
+     * @param x x-Koordinate
+     * @param y y-Koordinate
+     */
     public UIElement(int x, int y) {
         this(x, y, new UIElement[0]);
     }
 
+    /**
+     * Erstellt ein neues UIElement, das Unterelemente enthält.
+     * @param x x-Koordinate
+     * @param y y-Koordinate
+     * @param children Unterelemente
+     */
     public UIElement(int x, int y, UIElement[] children) {
         this.x = x;
         this.y = y;
@@ -24,16 +40,26 @@ public class UIElement extends Actor {
         this.world = null;
     }
 
+    /**
+     * Wird von Greenfoot aufgerufen, wenn ein Actor zur World hinzugefügt wird.
+     */
     public void addedToWorld(World w) {
         world = (UIWorld) w;
         for (var c : children) world.addObject(c, 0, 0);
     }
 
+    /**
+     * Fügt ein Unterelement hinzu.
+     * @param c das Unterelement
+     */
     public void addElement(UIElement c) {
         children.add(c);
         if (world != null) world.addObject(c, 0, 0);
     }
 
+    /**
+     * Blendet das UIElement und seine Unterelemente aus.
+     */
     public void hide() {
         if (hidden) return;
         hidden = true;
@@ -42,6 +68,9 @@ public class UIElement extends Actor {
         updateChildren(true);
     }
 
+    /**
+     * Zeigt das UIElement und seine Unterelemente an.
+     */
     public void show() {
         if (!hidden) return;
         hidden = false;
@@ -50,6 +79,10 @@ public class UIElement extends Actor {
         updateChildren(false);
     }
 
+    /**
+     * Blendet alle Unterelemente ein/aus.
+     * @param parentHidden ob das aktuelle Element aktuell angezeigt wird.
+     */
     private void updateChildren(boolean parentHidden) {
         for (var c : children) {
             c.parentHidden = parentHidden;
@@ -58,6 +91,9 @@ public class UIElement extends Actor {
         }
     }
 
+    /**
+     * Versteckt oder zeigt das Element an, indem es zur World hinzugefügt/entfernt wird.
+     */
     private void rerender() {
         try {
             if (hidden || parentHidden) {
