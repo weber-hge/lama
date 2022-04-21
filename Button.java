@@ -6,12 +6,13 @@ import greenfoot.*;
  * @author Arnim Antritter
  * @version 2022.4.19
  */
-public abstract class Button extends Actor {
+public abstract class Button extends UIElement {
 
     /**
      * Erzeugt einen neuen Button.
      */
-    public Button() {      
+    public Button(int x, int y) {
+        super(x, y);
         setImage("Button/default.png");
     }
     

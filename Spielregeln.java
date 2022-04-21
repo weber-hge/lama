@@ -1,16 +1,22 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Objekt zum Anzeigen der Spielregeln.
- * @author Arnim Antritter
- * @version 2022.4.19
- */
-public class Spielregeln extends Actor {
+public class Spielregeln extends Scene {
     
-    /**
-     * Erzeugt ein neues Objekt.
-     */
     public Spielregeln() {
-        setImage("Spielregeln/Spielregeln.png");
+        super("Spielregeln/Spielregeln.png");
+        
+        addElement(new B());
+    }
+}
+
+class B extends Button {
+    public B() {
+        super(1085, 714);
+        setImage("SpielregelnButton/ausblenden.png");
+    }
+    
+    void onClick() {
+        System.out.println("Spielregeln ausblenden");
+        world.usePreviousScene();
     }
 }

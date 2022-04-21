@@ -11,6 +11,7 @@ public class NeuesSpielButton extends Button {
      * Erzeugt einen neuen Button.
      */
     public NeuesSpielButton() {
+        super(0, 0);
         setImage("NeuesSpielButton/default.png");
     }
     

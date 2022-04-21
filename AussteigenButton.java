@@ -11,6 +11,7 @@ public class AussteigenButton extends Button {
      * Erzeugt einen neuen Button.
      */
     public AussteigenButton() {
+        super(1085, 655);
         setImage("AussteigenButton/aktiviert.png");
     }
     

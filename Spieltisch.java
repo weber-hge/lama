@@ -1,21 +1,22 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-
-/**
- * Spieltisch für mehrere Spielrunden.
- * @author Arnim Antritter
- * @version 2022.4.19
- */
-public class Spieltisch extends World {
+public class Spieltisch extends Scene{
     
-    /**
-     * Erzeugt einen neuen Spieltisch.
-     */
-    public Spieltisch() {    
-        super(1200, 800, 1);
-        setBackground("Spieltisch/Hintergrund.png");
+    public Spieltisch() {
+        super("Spieltisch/Hintergrund.png");
         
-        addObject(new AussteigenButton(), 1085, 660-5);
-        addObject(new SpielregelnButton(), 1085, 714);
+        addElement(new A());
+    }
+}
+
+class A extends Button {
+    public A() {
+        super(1085, 600);
+        setImage("SpielregelnButton/anzeigen.png");
+    }
+    
+    void onClick() {
+        System.out.println("Spielregeln anzeigen");
+        world.useScene(Spielregeln.class);
     }
 }
