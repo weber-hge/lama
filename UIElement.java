@@ -25,13 +25,13 @@ public class UIElement extends Actor {
     }
 
     public void addedToWorld(World w) {
-        for (var e : children) w.addObject(e, e.x, e.y);
         world = (UIWorld) w;
+        for (var c : children) world.addObject(c, 0, 0);
     }
 
     public void addElement(UIElement c) {
         children.add(c);
-        if (world != null) world.addObject(c, c.x, c.y);
+        if (world != null) world.addObject(c, 0, 0);
     }
 
     public void hide() {
@@ -39,7 +39,7 @@ public class UIElement extends Actor {
         hidden = true;
 
         rerender();
-        updateChildren(false);
+        updateChildren(true);
     }
 
     public void show() {
@@ -47,7 +47,7 @@ public class UIElement extends Actor {
         hidden = false;
 
         rerender();
-        updateChildren(true);
+        updateChildren(false);
     }
 
     private void updateChildren(boolean parentHidden) {
@@ -59,6 +59,16 @@ public class UIElement extends Actor {
     }
 
     private void rerender() {
-        getImage().setTransparency((hidden || parentHidden) ? 0 : 255);
+        try {
+            if (hidden || parentHidden) {
+                world.removeObject(this);
+            }
+            else {
+                var i = getImage();
+                world.addObject(this, x + i.getWidth() / 2, y + i.getHeight() / 2); 
+            }
+        } catch (Exception e) {
+            //Element war schon entfernt
+        }
     }
 }

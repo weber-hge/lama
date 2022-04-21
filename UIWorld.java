@@ -18,13 +18,12 @@ public class UIWorld extends World {
     }
 
     public void useScene(Class c) {
-        
         for (var s : scenes) {
             if (s == getCurrentScene()) continue;
             
             if (c.isInstance(s)) {
                 if (history.size() != 0) getCurrentScene().hide();
-                if (history.size() > 10) history.remove(0);
+                if (history.size() >= 10) history.remove(0);
                 
                 history.add(s);
                 s.show();
@@ -38,7 +37,7 @@ public class UIWorld extends World {
     }
 
     public void usePreviousScene() {
-        if (history.size() == 0) return;
+        if (history.size() <= 1) return;
         getCurrentScene().hide();
         history.remove(history.size() - 1);
 

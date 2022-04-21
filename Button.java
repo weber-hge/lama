@@ -12,10 +12,17 @@ public abstract class Button extends UIElement {
      * Erzeugt einen neuen Button.
      */
     public Button(int x, int y) {
-        super(x, y);
-        setImage("Button/default.png");
+        this(x, y, "Button/default.png");
     }
-    
+
+    /**
+     * TODO
+     */
+    public Button(int x, int y, String filePath) {
+        super(x, y);
+        setImage(filePath);
+    }
+
     public final void act() {
         if (Greenfoot.mousePressed(this)) this.onClick();
     }

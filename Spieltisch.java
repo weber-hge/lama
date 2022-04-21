@@ -1,22 +1,15 @@
 import greenfoot.*;
 
 public class Spieltisch extends Scene{
-    
+
     public Spieltisch() {
         super("Spieltisch/Hintergrund.png");
-        
-        addElement(new A());
-    }
-}
 
-class A extends Button {
-    public A() {
-        super(1085, 600);
-        setImage("SpielregelnButton/anzeigen.png");
-    }
-    
-    void onClick() {
-        System.out.println("Spielregeln anzeigen");
-        world.useScene(Spielregeln.class);
+        addElement(new Button(1085, 714, "SpielregelnButton/anzeigen.png") {
+                void onClick() {
+                    int i = 0;
+                    world.useScene(Spielregeln.class);
+                }
+            });
     }
 }
