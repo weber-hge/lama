@@ -42,7 +42,6 @@ public class UIWorld extends World {
             
             if (c.isInstance(s)) {
                 if (history.size() != 0) getCurrentScene().hide();
-                if (history.size() >= 10) history.remove(0);
                 
                 history.add(s);
                 s.show();
