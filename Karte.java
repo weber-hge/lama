@@ -1,5 +1,5 @@
 /**
- * Repräsentiert eine Spielkarte.
+ * ReprÃ¤sentiert eine Spielkarte.
  * @author Arnim Antritter
  * @version 2022.4.24
  */
@@ -20,7 +20,7 @@ public class Karte extends Button {
     }
     
     /**
-     * Ändert das Aussehen der Karte.
+     * ï¿½ndert das Aussehen der Karte.
      * @param spielbar ob die Karte abgelegt werden kann
      */
     public void setzeSpielbar(boolean spielbar) {
@@ -29,7 +29,7 @@ public class Karte extends Button {
     }
     
     /**
-     * Gibt zurück, ob die Karte gelegt werden kann.
+     * Gibt zurï¿½ck, ob die Karte gelegt werden kann.
      * @return ob die Karte gelegt werden kann.
      */
     public boolean istSpielbar() {
