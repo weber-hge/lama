@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
  * Button zum Starten einer neuen Runde.
@@ -11,6 +11,7 @@ public class NeueRundeButton extends Button {
      * Erzeugt einen neuen Button.
      */
     public NeueRundeButton() {
+        super(0, 0);
         setImage("NeueRundeButton/default.png");
     }
     
