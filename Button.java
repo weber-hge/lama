@@ -33,7 +33,7 @@ public abstract class Button extends UIElement {
     }
 
     /**
-     * Wird bei jedem erneuten Klick einmal ausgeführt.
+     * Wird bei jedem erneuten Klick einmal ausgefÃ¼hrt.
      */
     abstract void onClick();
 }

@@ -13,7 +13,7 @@ public class UIWorld extends World {
     /**
      * Erzeugt eine neue Welt.
      * @param width Breite
-     * @param height Höhe
+     * @param height HÃ¶he
      */
     public UIWorld(int width, int height) {
         super(width, height, 1);
@@ -22,8 +22,8 @@ public class UIWorld extends World {
     }
 
     /**
-     * Fügt eine neue Szene hinzu.
-     * @param s die Szene, die hinzugefügt werden soll.
+     * FÃ¼gt eine neue Szene hinzu.
+     * @param s die Szene, die hinzugefï¿½gt werden soll.
      */
     public void addScene(Scene s) {
         scenes.add(s);
@@ -51,7 +51,7 @@ public class UIWorld extends World {
     }
 
     /**
-     * Gibt die aktuelle Szene zurück.
+     * Gibt die aktuelle Szene zurÃ¼ck.
      * @return die aktuelle Szene
      */
     public Scene getCurrentScene() {

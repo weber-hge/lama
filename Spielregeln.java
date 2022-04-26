@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * Szene für Anzeigen der Spielregeln.
+ * Szene fÃ¼r Anzeigen der Spielregeln.
  * @author Arnim Antritter
  * @version 2022.4.21
  */

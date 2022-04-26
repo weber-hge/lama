@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * Szene für Anzeigen des Spieltischs.
+ * Szene fÃ¼r Anzeigen des Spieltischs.
  * @author Arnim Antritter
  * @version 2022.4.21
  */
