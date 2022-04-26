@@ -23,7 +23,7 @@ public class UIWorld extends World {
 
     /**
      * Fügt eine neue Szene hinzu.
-     * @param s die Szene, die hinzugef�gt werden soll.
+     * @param s die Szene, die hinzugefügt werden soll.
      */
     public void addScene(Scene s) {
         scenes.add(s);
@@ -37,7 +37,7 @@ public class UIWorld extends World {
      * @param c die Klasse der Szene, die angezeigt werden soll
      */
     public void useScene(Class c) {
-        for (var s : scenes) {
+        for (Scene s : scenes) {
             if (s == getCurrentScene()) continue;
             
             if (c.isInstance(s)) {

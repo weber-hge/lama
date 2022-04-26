@@ -1,17 +1,17 @@
-import greenfoot.Actor;
-import greenfoot.World;
 import java.util.ArrayList;
+import greenfoot.*;
 
 /**
  * Klasse zum einfachen Ein- und Ausblenden von {@link Actor}.
  * @author Arnim Antritter
- * @version 2022.4.21
+ * @version 2022.4.26
  */
 public class UIElement extends Actor {
     private int x;
     private int y;
     private boolean hidden;
     private boolean parentHidden;
+    private boolean inWorld;
     private ArrayList<UIElement> children;
     protected UIWorld world;
 
@@ -35,8 +35,9 @@ public class UIElement extends Actor {
         this.y = y;
         this.hidden = false;
         this.parentHidden = false;
+        this.inWorld = false;
         this.children = new ArrayList();
-        for (var c : children) addElement(c);
+        for (UIElement c : children) addElement(c);
         this.world = null;
     }
 
@@ -45,7 +46,8 @@ public class UIElement extends Actor {
      */
     public void addedToWorld(World w) {
         world = (UIWorld) w;
-        for (var c : children) world.addObject(c, c.x, c.y);
+        inWorld = true;
+        for (UIElement c : children) world.addObject(c, c.x, c.y);
     }
 
     /**
@@ -84,7 +86,7 @@ public class UIElement extends Actor {
      * @param parentHidden ob das aktuelle Element aktuell angezeigt wird.
      */
     private void updateChildren(boolean parentHidden) {
-        for (var c : children) {
+        for (UIElement c : children) {
             c.parentHidden = parentHidden;
             c.rerender();
             c.updateChildren(parentHidden);
@@ -95,16 +97,33 @@ public class UIElement extends Actor {
      * Versteckt oder zeigt das Element an, indem es zur World hinzugefügt/entfernt wird.
      */
     private void rerender() {
-        try {
-            if (hidden || parentHidden) {
-                world.removeObject(this);
-            }
-            else {
-                var i = getImage();
-                world.addObject(this, x + i.getWidth() / 2, y + i.getHeight() / 2); 
-            }
-        } catch (Exception e) {
-            //Element war schon entfernt
+        if (inWorld) {
+            world.removeObject(this);
+            inWorld = false;
         }
+        
+        if (!hidden && !parentHidden) {
+            GreenfootImage i = getImage();
+            world.addObject(this, x + i.getWidth() / 2, y + i.getHeight() / 2);
+            inWorld = true;
+        }
+    }
+
+    /**
+     * Ändert den x-Wert des Objekts.
+     * @param x x-Wert
+     */
+    protected void setX(int x) {
+        this.x = x;
+        rerender();
+    }
+
+    /**
+     * Ändert den y-Wert des Objekts.
+     * @param x y-Wert
+     */
+    protected void setY(int y) {
+        this.y = y;
+        rerender();
     }
 }

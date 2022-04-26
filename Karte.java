@@ -20,7 +20,7 @@ public class Karte extends Button {
     }
     
     /**
-     * �ndert das Aussehen der Karte.
+     * Andert das Aussehen der Karte.
      * @param spielbar ob die Karte abgelegt werden kann
      */
     public void setzeSpielbar(boolean spielbar) {
@@ -29,7 +29,7 @@ public class Karte extends Button {
     }
     
     /**
-     * Gibt zur�ck, ob die Karte gelegt werden kann.
+     * Gibt zurück, ob die Karte gelegt werden kann.
      * @return ob die Karte gelegt werden kann.
      */
     public boolean istSpielbar() {
