@@ -5,23 +5,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *
  * @author Lisa Abendschein
  * @author Juliane Fassl
- * @version 28.04.2022
+ * @version 03.05.2022
  */
 public class Spieler extends Actor
 {
     // Attribute
-    public boolean playing;
-    public int anzKarten;
+    private boolean playing;
+    private int anzKarten;
+    
+    private Kartenstapel eins;
+    private Kartenstapel zwei;
+    private Kartenstapel drei;
+    private Kartenstapel vier;
+    private Kartenstapel fünf;
+    private Kartenstapel sechs;
+    private Kartenstapel lama;
    
     //Konstruktor
     /**
      * Erstellt einen Spieler mit playing zuerst auf true gesetzt, da der Spieler ja zu Beginn aktiv ist und noch nicht ausgestiegen ist.
      * anzKarten wird auf die Anzahl der Startkarten gestetzt
-     * ??-- also 6???
     */
     public Spieler (){
         this.playing = true;
-        this.anzKarten = 6;
+        this.anzKarten = 0;
     }
    
     //Methoden
@@ -64,23 +71,6 @@ public class Spieler extends Actor
     }
     
     
-    
-    //Fragen + Ideen
-    /**
-     * Legt die entsprechende Karte.
-     * @param wert Gibt an, welche Karte abgelegt werden soll.
-     */
-    private void karteLegen(int wert){
-        //Welche Klasse ist dafür zuständig?
-        
-        //wenn Karte existiert
-        changeAnzKarten(false);
-        
-        //Verweis Klasse "Karten" bzw. Spielelogik?
-    }
-    
-    //Handkarten: Bei Spieler oder Karten?
-    
     /**
      * Bestimmt die Strafpunkte der Handkarten.
      * @return Strafpunkte
@@ -88,8 +78,29 @@ public class Spieler extends Actor
     private int strafpunkte(){
         int punkte = 0;
         
-        //Punkte zählen
-        
+        if(eins.istLeer() == false){
+            punkte ++;
+        }
+        if(zwei.istLeer() == false){
+            punkte += 2;
+        }
+        if(drei.istLeer() == false){
+            punkte += 3;
+        }
+        if(vier.istLeer() == false){
+            punkte += 4;
+        }
+        if(fünf.istLeer() == false){
+            punkte += 5;
+        }
+        if(sechs.istLeer() == false){
+            punkte += 6;
+        }
+        if(lama.istLeer() == false){
+            punkte += 10;
+        }
+    
         return punkte;
     }
+    
 }
