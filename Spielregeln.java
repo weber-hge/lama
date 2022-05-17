@@ -13,7 +13,7 @@ public class Spielregeln extends Scene {
     public Spielregeln() {
         super("Scenes/Spielregeln/Spielregeln.png");
         
-        addElement(new Button(1085, 714, "Scenes/Spielregeln/SpielregelnAusblenden.png") {
+        addElement(new Button(982, 692, "Scenes/Spielregeln/SpielregelnAusblenden.png") {
                 void onClick() {
                     world.usePreviousScene();
                 }
