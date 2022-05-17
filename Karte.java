@@ -31,7 +31,7 @@ public class Karte extends Button {
     }
 
     /**
-     * Gibt zurück, ob die Karte gelegt werden kann.
+     * Gibt zur�ck, ob die Karte gelegt werden kann.
      * @return ob die Karte gelegt werden kann.
      */
     public boolean istSpielbar() {
