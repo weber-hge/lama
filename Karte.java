@@ -41,10 +41,10 @@ public class Karte extends Button {
     void onClick(){
         if (!spielbar) return;
         else setzeSpielbar(false);
-        
+
         //TODO: Wert an Ablagestapel übergeben
     }
-    
+
     public int getWert() {
         return wert;
     }
@@ -52,97 +52,25 @@ public class Karte extends Button {
     /**
      * Wird aufgerufen, wenn die Karte angeklickt wird.
      */
-    void geheZu(Kartenstapel k, boolean rotation) {
-        if(rotation == true){
-            setRotation((int)((Math.random()*180+270)%360));
+    void geheZu(int x, int y, boolean rotation) {
+        if(rotation) setRotation((int) ((Math.random()*180+270) % 360));
+        
+        int dx = x - getX();
+        int dy = y - getY();
+
+        while (dx != 0 || dy != 0) {
+            int mx = 0, my = 0;
+            if (dx != 0) mx = dx / Math.abs(dx); //+1 oder -1
+            if (dy != 0) my = dy / Math.abs(dy); //+1 oder -1
+            
+            //TODO: mx und yx anpassen, dass Gerade bis zu (x|y) ensteht
+            //TODO: Rotation langsam ändern
+            setLocation(getX() + mx, getY() + my);
+            Greenfoot.delay(4);
+            
+            dx = x - getX();
+            dy = y - getY();
         }
-        while(!(getX()==k.getX() && getY()==335)){
-            int a=k.getX()-getX();
-            int b=k.getY()-getX();
-            if(a>0){
-                if(b>0){
-                    if(Math.abs(a)>Math.abs(b)){
-                        while(getX()<k.getX()){
-                            while(getY()<k.getY()){
-                                setLocation(getX()+1,getY()+1);
-                                Greenfoot.delay(4);
-                            }
-                            setLocation(getX()+1,getY());
-                            Greenfoot.delay(4);
-                        }
-                    }
-                    else{
-                        while(getY()<k.getY()){
-                            while(getX()<k.getX()){
-                                setLocation(getX()+1,getY()+1);
-                                Greenfoot.delay(4);
-                            }
-                            setLocation(getX(),getY()+1);
-                            Greenfoot.delay(4);
-                        }
-                    }
-                }
-                else{
-                    if(Math.abs(a)>Math.abs(b)){
-                        while(getX()<k.getX()){
-                            while(getY()>k.getY()){
-                                setLocation(getX()+1,getY()-1);
-                                Greenfoot.delay(4);
-                            }
-                            setLocation(getX()+1,getY());
-                            Greenfoot.delay(4);
-                        }
-                    }
-                    else{
-                        while(getY()>k.getY()){
-                            while(getX()<k.getX()){
-                                setLocation(getX()+1,getY()-1);
-                                Greenfoot.delay(4);
-                            }
-                            setLocation(getX(),getY()-1);
-                            Greenfoot.delay(4);
-                        }
-                    }
-                }
-            }
-            else{
-                if(b>0){
-                    if(Math.abs(a)>Math.abs(b)){
-                        while(getX()>k.getX()){
-                            while(getY()<k.getY()){
-                                setLocation(getX()-1,getY()+1);
-                            }
-                            setLocation(getX()-1,getY());
-                        }
-                    }
-                    else{
-                        while(getY()<k.getY()){
-                            while(getX()>k.getX()){
-                                setLocation(getX()-1,getY()+1);
-                            }
-                            setLocation(getX(),getY()+1);
-                        }
-                    }
-                }
-                else{
-                    if(Math.abs(a)>Math.abs(b)){
-                        while(getX()>k.getX()){
-                            while(getY()>k.getY()){
-                                setLocation(getX()-1,getY()-1);
-                            }
-                            setLocation(getX()-1,getY());
-                        }
-                    }
-                    else{
-                        while(getY()>k.getY()){
-                            while(getX()>k.getX()){
-                                setLocation(getX()-1,getY()-1);
-                            }
-                            setLocation(getX(),getY()-1);
-                        }
-                    }
-                }
-            }
-        }
+
     }
 }
